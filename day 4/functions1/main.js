@@ -243,13 +243,13 @@ const countWord = function(str, word){
 const countAllWords = function(story, word){
     story = story.toLowerCase()
     story = removeSpecial(story)
-  //  word = creatWords(story)
-  //  let arrWords = story.split(" ")
-  //  for(let w in arrWords){
-   //     word[w] = countWord[w]
-  //  }
+    word = creatWords(story)
+    let arrWords = story.split(" ")
+    for(let w of arrWords){
+        word[w] = countWord(w)
+    }
 
-
+return word
 }
 
 let story = "In the beginning there was light. Then there were wolves. Finally there was a big fire. Ultimately, Shelob the wolf-master put out the fire with her feet. But until then, the fire caused one heck of a lot of damage."
@@ -257,8 +257,5 @@ const specialChars = [",", ".", "'", '"',"?", "!", ";"]
 const wordCounts = {}
 let msg = "we love you"
 
-// console.log(creatWords(story))
-story = removeSpecial(story)
-story = story.toLowerCase()
-// countAllWords(story, wordCounts)
-  console.log(countAllWords(story));
+
+console.log(countAllWords(story, wordCounts))
