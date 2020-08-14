@@ -1,3 +1,4 @@
+
 #container {
     width: 250px;
     height: 385px;
@@ -5,7 +6,8 @@
     border-color: dark;
     border-style: solid;
     margin-left: 40%;
-    text-align: center
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .box{
     width: 100px;
@@ -17,6 +19,9 @@
 .unvalid{
     color: red
 }
-#signed{
-    color: green
+#msg{
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 37%;
+    margin-top: 15%;
 }
