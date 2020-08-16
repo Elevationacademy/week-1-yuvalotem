@@ -1,67 +1,66 @@
 // //EX 2
-// const reservations = {
-//     bob: { claimed: false },
-//     ted: { claimed: true }
-// }
+const reservations = {
+    bob: { claimed: false },
+    ted: { claimed: true }
+}
 
-// const name = document.getElementById("name")
-// const button = document.getElementById("btn")
-// button.onclick = function () {
-//     let ans = document.createElement("div")
-//     let count = 0;
-//     for (n in reservations) {
-//         if (name.value.toLowerCase() == n) {
-//             if (reservations[n].claimed == false) {
-//                 count++
-//             } else {
-//                 count--
-//             }
-//         }
-//     }
-//     if (count == 1) {
-//         ans.innerHTML = "welcome " + name.value.toLowerCase()
-//         reservations[name.value.toLowerCase()] = true
-//     } else if (count == -1) {
-//         ans.innerHTML = "hello " + name.value.toLowerCase() + " your reservation already been taken"
-//     } else {
-//         ans.innerHTML = "hello " + name.value.toLowerCase() + " you dont seem to have a reservation, ill sign you straight away"
-//         reservations[name.value.toLowerCase()] = false
-//     }
-//     console.log(reservations)
-//     document.body.appendChild(ans)
-//     document.getElementById("name").value = ''
-// }
+const name = document.getElementById("name")
+const button = document.getElementById("btn")
+button.onclick = function () {
+    let ans = document.createElement("div")
+    let isReserved = false;
+    for (let n in reservations) {
+        if (name.value.toLowerCase() == n) {
+            isReserved = true;
 
-//ex3
-const randomColor = function() {
-    const colors = ["#8e44ad", "#3498db", "#c0392b", "#f1c40f", "#d35400", "#2ecc71", "#1abc9c", "#2c3e50", "#7f8c8d"]
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  }
-
-    const changeColor = function(box) {
-        let count = 0;
-        document.getElementById(box.id).style.backgroundColor = randomColor()
-        for(i=2; i<7;i++){
-            if(document.getElementById('box' + i).style.backgroundColor == document.getElementById('box' + (i-1)).style.backgroundColor){
-                count++;
-            }
-        }
-        if(count == 5){
-            const msg = document.createElement('p')
-            msg.innerHTML = "Nice job!"
-            document.body.appendChild(msg)
         }
     }
-
-
-for(let i = 1; i<7; i++){
-    const box = document.createElement('div')
-    box.setAttribute("class", 'box')
-    box.setAttribute("id", 'box' + i)
-    box.setAttribute("onmouseenter", `changeColor(box${i})`)
-    document.getElementById("bigbox").appendChild(box)
+    if (isReserved) {
+        if (reservations[name.value.toLowerCase()].claimed == false) {
+            ans.innerHTML = "welcome " + name.value.toLowerCase()
+            reservations[name.value.toLowerCase()].claimed = true
+        } else {
+            ans.innerHTML = "hello " + name.value.toLowerCase() + " your reservation already been taken"
+        }
+    } else {
+        ans.innerHTML = "hello " + name.value.toLowerCase() + " you dont seem to have a reservation, ill sign you straight away"
+        reservations[name.value.toLowerCase()] = {["claimed"]: false}
+    }
+    console.log(reservations)
+    document.body.appendChild(ans)
+    document.getElementById("name").value = ''
 }
+
+//ex3
+// const randomColor = function() {
+//     const colors = ["#8e44ad", "#3498db", "#c0392b", "#f1c40f", "#d35400", "#2ecc71", "#1abc9c", "#2c3e50", "#7f8c8d"]
+//     const randomIndex = Math.floor(Math.random() * colors.length);
+//     return colors[randomIndex];
+//   }
+
+//     const changeColor = function(box) {
+//         let count = 0;
+//         document.getElementById(box.id).style.backgroundColor = randomColor()
+//         for(i=2; i<7;i++){
+//             if(document.getElementById('box' + i).style.backgroundColor == document.getElementById('box' + (i-1)).style.backgroundColor){
+//                 count++;
+//             }
+//         }
+//         if(count == 5){
+//             const msg = document.createElement('p')
+//             msg.innerHTML = "Nice job!"
+//             document.body.appendChild(msg)
+//         }
+//     }
+
+
+// for(let i = 1; i<7; i++){
+//     const box = document.createElement('div')
+//     box.setAttribute("class", 'box')
+//     box.setAttribute("id", 'box' + i)
+//     box.setAttribute("onmouseenter", `changeColor(box${i})`)
+//     document.getElementById("bigbox").appendChild(box)
+// }
 
 
 // ex 4
